@@ -1,11 +1,35 @@
 #Module 5 - Doing Math
-#Find the value of inverse of a matrix, determinant of a matrix 
-#by using the following values:
-
+# Create starting matrices
 A <- matrix(1:100, nrow=10)  
 B <- matrix(1:1000, nrow=10)
 
+# Transpose
+tA <- t(A)
+tB <- t(B)
 
-#finding inverse and calculate the determinant 
-solve(A)
-det(B)
+# Create random samples with corresponding sizes
+a <- replicate(10, as.integer(abs(rnorm(10) * 10)))
+b <- replicate(10, as.integer(abs(rnorm(100) * 100)))
+
+# Transposed matrices multiplied by corresponding vectors
+A2 <- tA * a
+B2 <- tB * b
+
+# Conversion of vectors into matrices
+a2 <- matrix(a, nrow=10)
+b2 <- matrix(b, nrow=10)
+
+# Multiplication of matrices
+newA <- a2 %*% A2
+newB <- b2 %*% B2
+
+# Determinant and Inverse
+det_newA <- det(newA)
+det_newA
+solve_newA <- solve(newA)
+solve_newA
+
+det_newB <- det(newB)
+det_newB
+solve_newB <- solve(newB)
+solve_newB
